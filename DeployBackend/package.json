@@ -1,0 +1,19 @@
+{
+  "name": "deploybackend",
+  "version": "1.0.0",
+  "description": "A basic backend app to deploy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "npm"
+  ],
+  "author": "Varun Taneja",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.6.0",
+    "express": "^5.1.0"
+  }
+}
