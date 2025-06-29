@@ -85,4 +85,18 @@
     - add node_modules and .env to .gitignore 
     - push to github
     - add github repo on domain
-    - add environment variables 
+    - add environment variables   
+<br> 
+
+## Data Modelling with Mongoose
+
+Data modeling is the process of creating a visual representation, or blueprint, of how data is structured and organized within a system or database. It involves defining data entities, their attributes, and the relationships between them, essentially outlining how data will be stored and accessed.  
+
+We can use tools like **eraser.io** or **Moon Modeler**(paid) for data modelling.
+
+The first step of building a backend is to analize the data and fields to be stored in the DB.
+
+[StackBlitz Practice Project](https://stackblitz.com/edit/stackblitz-starters-pijqbpno?description=&file=README.md&title=Express%20Starter)  
+
+1. Create a models folder to store all models.   
+*NOTE* - General naming scheme - `<model_name>.models.js`.

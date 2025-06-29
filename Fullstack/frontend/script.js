@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () =>
             let titleNode = document.createTextNode(`${joke.title}`);
             let contentNode = document.createTextNode(`${joke.content}`);
             li.appendChild(titleNode);
-            li.innerHTML += '<br>';
+            li.textContent += ' : ';
             li.appendChild(contentNode);
             ul.appendChild(li);
         }
