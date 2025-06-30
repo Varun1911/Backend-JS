@@ -99,4 +99,72 @@ The first step of building a backend is to analize the data and fields to be sto
 [StackBlitz Practice Project](https://stackblitz.com/edit/stackblitz-starters-pijqbpno?description=&file=README.md&title=Express%20Starter)  
 
 1. Create a models folder to store all models.   
-*NOTE* - General naming scheme - `<model_name>.models.js`.
+*NOTE* - General naming scheme - `<model_name>.models.js`.  
+<br> <br>
+
+2. Import `mongoose` and create a scheme using the `new mongoose.Scheme({})` function.
+    ```js
+    const userSchema = new mongoose.Schema({
+        username: String,
+        isActive: Boolean,
+    });
+    ```  
+    <br>
+
+    - The above method of defining schema object is correct but a better approach would be to define an object for every key.
+    ```js
+    const userSchema = new mongoose.Schema({
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+        },
+        email: {
+            type: String,
+            required: [true, "email already registered"],
+            unique: true,
+            lowercase: true,
+        },
+    });
+    ```
+    <br>
+
+    - It is common to have timestamps stored in the database. So mongoose allows us to do that like so -
+    ```js
+    const userSchema = new mongoose.Schema({}, {timestamps : ture});
+    ```
+    <br> <br>
+
+3. Export the scheme to create schema in mongoDB.
+    ```js
+    export const User = mongoose.model('User', userSchema);
+    ```  
+      
+    `model()` takes 2 parameters -   
+    a) name of the model  
+    b) on what schema should it be based on  
+
+<br>
+
+*NOTE* - If we want to create a schema which has another schema in as a type, we can do it like so -
+
+```js
+const todoSchema = new mongoose.Schema(
+  {
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+
+    subTodos: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SubTodo',
+      },
+    ], // Array of subTodos
+  },
+  { timestamps: true }
+);
+```
+The `type` will always be `mongoose.Schema.Types.ObjectId` and the `ref` would the name given the the `mongoose.model()` function. It is common practice to keep the model variable name same as the name providied in the model function.
