@@ -184,6 +184,33 @@ The `type` will always be `mongoose.Schema.Types.ObjectId` and the `ref` would t
   
 4. install prettier using `npm i -D prettier` so that the team follows same coding practice and there are no conflicts on github. Similar to nodemon, it is a dev dependency.  
 Create a prettier config file `.prettierrc`. Add the necessary configurations.  
-Also create a `.prettierignore` file which tells prettier which files should not be formatted like `.env`.
-<br>
+Also create a `.prettierignore` file which tells prettier which files should not be formatted like `.env`.  
+<br>   
   
+5. Install `dotenv`, `mongoose` and `express`.  
+  <br>  
+
+6. Import and configure dotenv as early as possible in your application. We can use the older way of configuring - `require('dotenv').config({path: '/.env'});`.   
+But to maintain same import style we can use -
+    ```js
+    import dotenv from 'dotenv';
+
+    dotenv.config({
+        path : '/.env'
+    });
+    ```  
+    Update you "dev" command in package.json from  
+     `"dev": "nodemon src/index.js"` to   
+     `"dev": "nodemon -r dotenv/config --experimental-json-module src/index.js"`  
+     --experimental-json-module is needed as it is an experimental feature for now.
+  
+## Connecting Database 
+1. Create a cluster on mongoDB Atlas. Atlas is an online database.  
+  
+2. Add the ip address of the server your backend is deployed on. For testing we'll allow all ipv4 by adding 0.0.0.0/0.  
+
+3. Create a user and give admin access.  
+
+4. Click the connect button on your cluster and get the mongoDB uri and put it in the environment varibales.  
+
+5. In code, you should always connect db in try catch block and use async await as the connection may take time.
