@@ -167,4 +167,23 @@ const todoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 ```
-The `type` will always be `mongoose.Schema.Types.ObjectId` and the `ref` would the name given the the `mongoose.model()` function. It is common practice to keep the model variable name same as the name providied in the model function.
+The `type` will always be `mongoose.Schema.Types.ObjectId` and the `ref` would the name given the the `mongoose.model()` function. It is common practice to keep the model variable name same as the name providied in the model function.  
+<br>  
+
+## Setup a Professional Backend Project
+1. Setup the folder structure as explained earlier. Initialise node, create .env, README, .gitignore and basic files in the src folder.  
+<br>
+
+2. Install nodemon using the command `npm i -D nodemon`.  
+ Nodemon automatically restarts the server whenever me make any changes in the server.  
+ `-D` in the command is to install dev dependency so that nodemon is not used in production and only in development.  
+ <br>
+  
+3. Setup dev command for nodemon in the package.json file. `"dev" : "nodemon src/index.js"`.    
+<br>
+  
+4. install prettier using `npm i -D prettier` so that the team follows same coding practice and there are no conflicts on github. Similar to nodemon, it is a dev dependency.  
+Create a prettier config file `.prettierrc`. Add the necessary configurations.  
+Also create a `.prettierignore` file which tells prettier which files should not be formatted like `.env`.
+<br>
+  
