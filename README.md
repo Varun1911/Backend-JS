@@ -204,6 +204,8 @@ But to maintain same import style we can use -
      `"dev": "nodemon -r dotenv/config --experimental-json-module src/index.js"`  
      --experimental-json-module is needed as it is an experimental feature for now.
   
+  <br>
+
 ## Connecting Database 
 1. Create a cluster on mongoDB Atlas. Atlas is an online database.  
   
@@ -213,4 +215,42 @@ But to maintain same import style we can use -
 
 4. Click the connect button on your cluster and get the mongoDB uri and put it in the environment varibales.  
 
-5. In code, you should always connect db in try catch block and use async await as the connection may take time.
+5. In code, you should always connect db in try catch block and use async await as the connection may take time.  
+<br>
+
+## Custom API Response and Error Handling
+
+### Setup Server
+1. Install cookie-parser and cors(Cross Origin Resource Sharing) using `npm i cookie-parse cors`.  
+<br>   
+2. The `use()` method is used for middlewares and configurations. Configure `cors` with this method.   
+  
+    ```js 
+    app.use(cors()); // We can directly use this 
+
+    //We can use cors options to configure as well.
+    app.use(cors({
+        origin: process.env.CORS_ORIGIN,
+        credentials: true
+    }))
+    ```  
+      
+    Read cors documentation for more details on cors options.  
+  <br>
+  
+3. Parse incoming requests with JSON payloads by using the following middleware : `app.use(express.json({limit: '16kb'}));`.  
+The options are not necessary.  
+<br> 
+
+4. Configure the app to encode incoming urls by : `app.use(express.urlencoded({extended: true, limit: '16kb'}));`.    
+The options are not necessary.  
+<br> 
+
+5. Configure the app to store static files like pdf, images accessible to all by `app.use(express.static("public"))`.        
+<br> 
+
+6. Configure cookie parser by `app.use(cookieParser())`.  This helps the server access and set cookies on the user's browser.  
+<br> 
+    
+**Middleware** - Middleware in Express.js is a function that processes incoming requests before they reach the final route handler, allowing you to modify the request or response, run code, or end the request-response cycle.
+
