@@ -257,7 +257,6 @@ The options are not necessary.
 
 ## Models with hooks and JWT
 
-### Things to note about data modelling
 - MongoDB will automatically make your model name lowercase and plural and store it. If your model name is 'Model' then it becomes 'models'.  
 <br> 
   
@@ -279,5 +278,20 @@ The `jwt.sign()` method takes 3 parameters - payload, access token and access to
 <br>  
  
 - Similar to hooks, we can also write our custom methods for our custom logic on that schema.  
- sytanx - `schema.methods.func = function(){}` 
+ sytanx - `schema.methods.func = function(){}`   
+<br>
 
+## Upload file (Multer)
+
+### Cloudinary        
+Cloudinary is a cloud-based platform that provides a comprehensive solution for managing, transforming, and delivering images and videos for websites and mobile applications. 
+
+Steps 
+
+- the user will upload the file and we will store it on our local server temporarily using Multer.
+- we'll take the file from the server and store it on cloudinary server.
+
+*Note* - We upload it on our server so that if the upload to cloudinary fails, we can reattempt the uplaod.  
+
+### Multer
+Multer is a Node.js middleware designed to handle multipart/form-data, primarily used for uploading files.
