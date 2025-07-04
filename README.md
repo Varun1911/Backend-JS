@@ -254,3 +254,30 @@ The options are not necessary.
     
 **Middleware** - Middleware in Express.js is a function that processes incoming requests before they reach the final route handler, allowing you to modify the request or response, run code, or end the request-response cycle.
 
+
+## Models with hooks and JWT
+
+### Things to note about data modelling
+- MongoDB will automatically make your model name lowercase and plural and store it. If your model name is 'Model' then it becomes 'models'.  
+<br> 
+  
+- `index : true` - is an option used in a schema definition to create an index on a specific field. Indexes improve query performance on that field.   
+Query performance refers to how fast and efficiently a database can find and return the data you ask for.   
+<br>
+  
+- Mongoose Aggregate Paginate v2 is used for aggregation pipleines.  
+Use `schema.plugin(mongooseAggregatePaginate)` to access aggregation queries on the schema.     
+<br>  
+   
+- bcrypt which helps us to hash(encrypt) any payload usually passwords.  
+To encrypt password we'll use one of mongoose's hooks (middleware) - Pre hook. The Pre hook runs just before our data is saved.  
+*NOTE* : Donot use arrow function in Pre hook callback as it does not have reference to `this`.   
+<br>
+ 
+- Json Web Token (JWT) is used for securely transmitting information between parties as a self-contained token. It's often used for stateless authentication. JWT is bearer token.   
+The `jwt.sign()` method takes 3 parameters - payload, access token and access token expiry.
+<br>  
+ 
+- Similar to hooks, we can also write our custom methods for our custom logic on that schema.  
+ sytanx - `schema.methods.func = function(){}` 
+
