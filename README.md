@@ -294,4 +294,55 @@ Steps
 *Note* - We upload it on our server so that if the upload to cloudinary fails, we can reattempt the uplaod.  
 
 ### Multer
-Multer is a Node.js middleware designed to handle multipart/form-data, primarily used for uploading files.
+Multer is a Node.js middleware designed to handle multipart/form-data, primarily used for uploading files.  
+<br>  
+
+## HTTP methods and headers
+
+*NOTE* - The major difference between http vs https is just the protocol. Http sends data as clear text while https adds a layer of encryption. 
+
+HTTP - Hyper Text Transfer Protocol
+
+// These are just used as address  
+url -> uniform resource locator   
+uri -> uniform resource identifier  
+urn -> uniform resource name 
+
+
+### Http Headers
+
+Headers are metadata in the form of key value pairs sent along with request and response.   
+  
+Some uses for headers are caching, authentication, manage state etc.
+
+- Request Headers -> from client 
+- Response Headers -> from server (follow standard practices)
+- Representation Headers -> for encoding/compression
+- Payload Headers -> data   
+...
+
+Most Common Headers
+- Accept : application/json
+- User-Agent (which application sent the request eg - postman, browser etc)
+- Authorizarion (eg - Bearer token)
+- Content-Type 
+- Cookie
+- Cache-Control (when should data expire etc)  
+<br>   
+
+CORS Headers  
+- Access-Control-Allow-Origin
+- Access-Control-Allow-Credentials
+- Access-Control-Allow-Method  
+<br>   
+
+Security Headers    
+- Cross-Origin-Embedder-Policy
+- Cross-Origin-Opener-Policy
+- Content-Security-Policy
+- X-XSS-Protection
+
+
+### Http Methods
+
+
